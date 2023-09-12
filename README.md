@@ -18,6 +18,7 @@ Make sure that you've configured the config.py file with your bot token and othe
 
 You can also import the bot into your own. Here's an example of how to do that:
 
+```
 from telegram-llb import LocationTracker
 
 
@@ -35,7 +36,7 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
-
+```
 #Usage
 Once the bot is up and running, users can interact with it on Telegram. The bot responds to the /api command by providing a link to a location API.
 
