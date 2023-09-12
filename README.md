@@ -13,7 +13,9 @@ Configure other settings like the database file, update interval, log file, and 
 # Running the Bot
 
 To run the bot directly using Python 3, execute the following command in your terminal:
+```
 python3 telegram-llb.py
+```
 Make sure that you've configured the config.py file with your bot token and other settings as mentioned in the Configuration section.
 
 You can also import the bot into your own. Here's an example of how to do that:
