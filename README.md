@@ -3,7 +3,9 @@ telegram-llb track and handle location updates from users. It responds to specif
 
 # Installation
 Before you can run the bot, you need to install the required dependencies. To do this, navigate to the project directory and run the following command:
+```
 pip install -r requirements.txt
+```
 
 # Configuration
 Open the config.py file in the project directory.
