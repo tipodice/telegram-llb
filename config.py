@@ -1,5 +1,5 @@
 # Define configuration variables
-BOT_TOKEN = ""
+BOT_TOKEN = BOT_TOKEN_HERE
 DB_FILE = "locations.json"
 UPDATE_INTERVAL = 1
 LOG_FILE = "location_tracker.log"
