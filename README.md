@@ -23,6 +23,7 @@ Make sure that you've configured the config.py file with your bot token and othe
 You can also import the bot into your own. Here's an example of how to do that:
 
 ```
+import asyncio
 from telegram-llb import LocationTracker
 
 
