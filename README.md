@@ -1,8 +1,8 @@
 # telegram-llb
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 ![Python Version](https://img.shields.io/badge/Python-3.7%2B-blue.svg)
-![Build Status](https://travis-ci.org/username/repository.svg?branch=master)
-![Code Coverage](https://img.shields.io/codecov/c/github/username/repository)
+![Build Status](https://travis-ci.org/tipodice/repository.svg?branch=master)
+![Code Coverage](https://img.shields.io/codecov/c/github/tipodice/repository)
 
 Script track and manage location updates from users on Telegram. It processes these updates by capturing location data and storing it in a JSON database. Below, you'll find detailed instructions on how to set up and operate this bot.
 
