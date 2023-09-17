@@ -1,5 +1,5 @@
 # telegram-llb
-telegram-llb track and handle location updates from users. It responds to specific commands and stores location data in a database. Below, you'll find instructions on how to set up and run the bot.
+telegram-llb track and handle location updates from users. It responds to specific commands and stores location data in a simple json database. Below, you'll find instructions on how to set up and run the bot.
 
 # Installation
 Before you can run the bot, you need to install the required dependencies. To do this, navigate to the project directory and run the following command:
