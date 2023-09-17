@@ -9,7 +9,7 @@ pip install -r requirements.txt
 
 # Configuration
 Open the config.py file in the project directory.
-Replace YOUR_BOT_TOKEN_HERE with your Telegram bot token. You can obtain a token by talking to the BotFather on Telegram.
+Replace YOUR_BOT_TOKEN_HERE with your Telegram bot token. You can obtain a token by talking to the [BotFather](https://t.me/botfather) on Telegram.
 Configure other settings like the database file, update interval, log file, and log level as needed.
 
 # Running the Bot
