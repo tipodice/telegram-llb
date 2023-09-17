@@ -2,7 +2,7 @@
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 ![Python Version](https://img.shields.io/badge/Python-3.7%2B-blue.svg)
 
-Script track and manage location updates from users on Telegram. It processes these updates by capturing location data and storing it in a JSON database. Below, you'll find detailed instructions on how to set up and operate this bot.
+Script to track and manage location updates from users on Telegram. It processes these updates by capturing location data and storing it in a JSON database. Below, you'll find detailed instructions on how to set up and operate this bot.
 
 # Installation
 Before you can run the bot, you need to install the required dependencies. To do this, navigate to the project directory and run the following command:
