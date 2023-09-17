@@ -2,21 +2,16 @@ import asyncio
 import aiohttp
 import base64
 import time
-import json
 import logging
-
 from db import Database
-from config import BOT_TOKEN, DB_FILE, UPDATE_INTERVAL, LOG_FILE, LOG_LEVEL
+from config import *
 
 
 # Configure logging with rotating logs and improved formatting
 logging.basicConfig(
     level=getattr(logging, LOG_LEVEL.upper()),
     format="%(asctime)s - %(levelname)s - %(message)s",
-    handlers=[
-        logging.FileHandler(LOG_FILE),
-        logging.StreamHandler()
-    ]
+    handlers=[logging.FileHandler(LOG_FILE), logging.StreamHandler()],
 )
 
 
@@ -27,11 +22,6 @@ class LocationTracker:
         self.session = aiohttp.ClientSession()
         self.update_id = None
 
-    async def generate_b64_token(self, chat_id):
-        # Generate a base64-encoded token using the chat_id
-        token = base64.b64encode(chat_id.encode()).decode()
-        return token
-    
     async def fetch_updates(self):
         # Fetch updates from the Telegram API
         offset = f"?offset={self.update_id}" if self.update_id else ""
@@ -43,27 +33,9 @@ class LocationTracker:
                 if data.get("ok"):
                     await self.handle_updates(data.get("result"))
                 else:
-                    logging.error("Error in response: %s", data)
+                    logging.error("Error in response check for invalid TOKEN: %s", data)
         except Exception as e:
             logging.error("Error fetching updates: %s", e)
-
-    async def send_message(self, chat_id, text):
-        # Send a message to a specific chat using the bot API
-        url = f"https://api.telegram.org/bot{self.bot_token}/sendMessage"
-        params = {
-            "chat_id": chat_id,
-            "text": text,
-        }
-
-        try:
-            async with self.session.get(url, params=params) as response:
-                data = await response.json()
-                if data.get("ok"):
-                    logging.info("Message sent successfully.")
-                else:
-                    logging.error("Failed to send message: %s", data)
-        except Exception as e:
-            logging.error("Error sending message: %s", e)
 
     async def handle_updates(self, updates):
         # Handle incoming updates
@@ -73,7 +45,7 @@ class LocationTracker:
             return
 
         if not self.update_id:
-            self.update_id = updates[-1]["update_id"]
+            self.update_id = updates[-1].get("update_id")
         self.update_id += 1
 
         for update in updates:
@@ -81,27 +53,11 @@ class LocationTracker:
             if not msg:
                 continue
 
-            chat_id = msg["chat"]["id"]
-            
-            try:
-                user_message = msg.get("text")
-                if user_message:
-                    if user_message == "/api":
-                        if str(chat_id) in self.db.database:
-                            generate_token = await self.generate_b64_token(str(chat_id))
-                            await self.send_message(
-                                chat_id, f"http://site.com/api/{generate_token}"
-                            )
-                    else:
-                        logging.info(
-                            "Message was not sent because the command doesn't exists"
-                        )
-            except Exception as e:
-                logging.error("Error sending message: %s", e)
+            chat_id = msg.get("chat").get("id")
 
             if msg.get("location"):
                 try:
-                    date = msg["date"]
+                    date = msg.get("date")
                     edit_date = int(time.time())
                     location = msg.get("location")
                     lat = location.get("latitude")
@@ -113,17 +69,21 @@ class LocationTracker:
                                 "lat": lat,
                                 "lng": lng,
                                 "date": date,
-                                "live_period": live_period
+                                "live_period": live_period,
                             }
                             if self.db.add_or_update_record(str(chat_id), loc):
                                 logging.info(
-                                    "Record with latitude: %s longitude: %s added to DB", lat, lng
+                                    "Record with latitude: %s longitude: %s added to DB",
+                                    lat,
+                                    lng,
                                 )
                     if not live_period:
-                        self.db.remove_record(str(chat_id)) 
+                        self.db.remove_record(str(chat_id))
                         logging.info(
-                                "Live Location was deactivated by user, chat_id %s record was removed from DB", chat_id)
-                        
+                            "Live Location was deactivated by user, chat_id %s record was removed from DB",
+                            chat_id,
+                        )
+
                 except Exception as e:
                     logging.error("Error processing update: %s", e)
 
