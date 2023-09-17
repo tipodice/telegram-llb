@@ -1,5 +1,5 @@
 # telegram-llb
-telegram-llb track and handle location updates from users. It responds to specific commands and stores location data in a simple json database. Below, you'll find instructions on how to set up and run the bot.
+Script track and manage location updates from users on Telegram. It processes these updates by capturing location data and storing it in a JSON database. Below, you'll find detailed instructions on how to set up and operate this bot.
 
 # Installation
 Before you can run the bot, you need to install the required dependencies. To do this, navigate to the project directory and run the following command:
@@ -45,7 +45,7 @@ if __name__ == "__main__":
 
 # Usage
 Once the Telegram bot is active and running, users can interact with it.
-The bot functionality revolves around storing live location data shared by users who interact with it. The shared live location information is saved into a local JSON database. You can easily customize the database name by modifying the config.py file.
+The bot's operation centers on storing real-time location data provided by users who engage with it. This shared live location information is then stored in a JSON database local to the system. You can change database name in `config.py` file.
 
 # Contributing
 If you'd like to contribute to this project or report issues, please visit the GitHub repository: [GitHub Repository](https://github.com/tipodice/telegram-llb)
