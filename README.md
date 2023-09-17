@@ -44,7 +44,8 @@ if __name__ == "__main__":
 ```
 
 # Usage
-Once the bot is up and running, users can interact with it on Telegram. The bot responds to the /api command by providing a link to a location API.
+Once the Telegram bot is active and running, users can interact with it.
+The bot functionality revolves around storing live location data shared by users who interact with it. The shared live location information is saved into a local JSON database. You can easily customize the database name by modifying the config.py file.
 
 # Contributing
 If you'd like to contribute to this project or report issues, please visit the GitHub repository: [GitHub Repository](https://github.com/tipodice/telegram-llb)
