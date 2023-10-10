@@ -49,6 +49,3 @@ if __name__ == "__main__":
 # Usage
 Once the Telegram bot is active and running, users can interact with it.
 The bot's operation centers on storing real-time location data provided by users who engage with it. This shared live location information is then stored in a JSON database local to the system. You can change database name in `config.py` file.
-
-# Contributing
-If you'd like to contribute to this project or report issues, please visit the GitHub repository: [GitHub Repository](https://github.com/tipodice/telegram-llb)
